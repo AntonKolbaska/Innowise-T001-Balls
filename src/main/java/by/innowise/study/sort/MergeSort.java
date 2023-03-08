@@ -35,6 +35,9 @@ public class MergeSort extends Thread {
     }
 
     public void sort() {
+        if(this.getList().size()==0){
+            return;
+        }
         this.start();
         try {
             this.join();

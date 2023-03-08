@@ -8,7 +8,7 @@ import java.util.Comparator;
 
 public class OddEvenSort {
 
-    public void oddEvenSort(ArrayList<Ball> list, int n, Comparator<Ball> comp)
+    public void sort(ArrayList<Ball> list, int n, Comparator<Ball> comp)
     {
         boolean isSorted = false; // Initially array is unsorted
 

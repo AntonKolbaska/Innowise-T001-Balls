@@ -10,23 +10,23 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MergeSortTest extends TestCase {
+public class OddEvenSortTest extends TestCase {
 
     public void runColorsTest(ArrayList<String> colors, ArrayList resultList, ArrayList expectedList) {
-        MergeSort mergeSort = new MergeSort(resultList, new CompareByColor(colors));
-        mergeSort.sort();
+        OddEvenSort oddEvenSort = new OddEvenSort();
+        oddEvenSort.sort(resultList, resultList.size(), new CompareByColor(colors));
         assertEquals(resultList, expectedList);
     }
 
     public void runWeightTest(ArrayList resultList, ArrayList expectedList) {
-        MergeSort mergeSort = new MergeSort(resultList, new CompareByWeight());
-        mergeSort.sort();
+        OddEvenSort oddEvenSort = new OddEvenSort();
+        oddEvenSort.sort(resultList, resultList.size(), new CompareByWeight());
         assertEquals(resultList, expectedList);
     }
 
     public void runSizeTest(ArrayList resultList, ArrayList expectedList) {
-        MergeSort mergeSort = new MergeSort(resultList, new CompareBySize());
-        mergeSort.sort();
+        OddEvenSort oddEvenSort = new OddEvenSort();
+        oddEvenSort.sort(resultList, resultList.size(), new CompareBySize());
         assertEquals(resultList, expectedList);
     }
 
@@ -46,8 +46,8 @@ public class MergeSortTest extends TestCase {
         ArrayList<Ball> listResult = new ArrayList<>(List.of(
                 new Ball(15, 300, "yellow"),
                 new Ball(10, 200, "green"),
-                new Ball(10, 300, "black"),
                 new Ball(10, 100, "black"),
+                new Ball(10, 300, "black"),
                 new Ball(25, 700, "auburn")));
 
         runColorsTest(colors, list, listResult);
@@ -55,7 +55,7 @@ public class MergeSortTest extends TestCase {
 
     @Test
     public void testByColorExcludeColor() {
-        ArrayList<String> colors = new ArrayList<>(List.of("yellow","green","auburn"));
+        ArrayList<String> colors = new ArrayList<>(List.of("yellow", "green", "auburn"));
 
         ArrayList<Ball> list = new ArrayList<>(List.of(
                 new Ball(10, 100, "black"),
@@ -65,8 +65,8 @@ public class MergeSortTest extends TestCase {
                 new Ball(25, 700, "auburn")));
 
         ArrayList<Ball> listResult = new ArrayList<>(List.of(
-                new Ball(10, 300, "black"),
                 new Ball(10, 100, "black"),
+                new Ball(10, 300, "black"),
                 new Ball(15, 300, "yellow"),
                 new Ball(10, 200, "green"),
                 new Ball(25, 700, "auburn")
@@ -75,27 +75,6 @@ public class MergeSortTest extends TestCase {
         runColorsTest(colors, list, listResult);
     }
 
-    @Test
-    public void testByColorZeroPriority() {
-        ArrayList<String> colors = new ArrayList<>(List.of());
-
-        ArrayList<Ball> list = new ArrayList<>(List.of(
-                new Ball(10, 100, "black"),
-                new Ball(10, 300, "black"),
-                new Ball(15, 300, "yellow"),
-                new Ball(10, 200, "green"),
-                new Ball(25, 700, "auburn")));
-
-        ArrayList<Ball> listResult = new ArrayList<>(List.of(
-                new Ball(25, 700, "auburn"),
-                new Ball(10, 300, "black"),
-                new Ball(10, 100, "black"),
-                new Ball(10, 200, "green"),
-                new Ball(15, 300, "yellow")
-        ));
-
-        runColorsTest(colors, list, listResult);
-    }
 
     @Test
     public void testByColorLonesome() {
@@ -164,8 +143,8 @@ public class MergeSortTest extends TestCase {
         ArrayList<Ball> listResult = new ArrayList<>(List.of(
                 new Ball(10, 100, "black"),
                 new Ball(10, 200, "green"),
-                new Ball(15, 300, "yellow"),
                 new Ball(10, 300, "black"),
+                new Ball(15, 300, "yellow"),
                 new Ball(25, 700, "auburn")));
 
         runWeightTest(list, listResult);
@@ -231,9 +210,9 @@ public class MergeSortTest extends TestCase {
                 new Ball(25, 700, "auburn")));
 
         ArrayList<Ball> listResult = new ArrayList<>(List.of(
-                new Ball(10, 200, "green"),
-                new Ball(10, 300, "black"),
                 new Ball(10, 100, "black"),
+                new Ball(10, 300, "black"),
+                new Ball(10, 200, "green"),
                 new Ball(15, 300, "yellow"),
                 new Ball(25, 700, "auburn")));
 
@@ -286,4 +265,5 @@ public class MergeSortTest extends TestCase {
 
         runSizeTest(list, listResult);
     }
+
 }

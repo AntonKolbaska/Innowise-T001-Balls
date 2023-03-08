@@ -14,12 +14,18 @@ public class CompareByColor implements Comparator<Ball> {
 
     @Override
     public int compare(Ball o1, Ball o2) {
-        if (this.colorPriority.indexOf(o1.getColor()) < this.colorPriority.indexOf(o2.getColor())) {
-            return -1;
-        } else if (this.colorPriority.indexOf(o1.getColor()) == this.colorPriority.indexOf(o2.getColor())) {
-            return 0;
+        if (colorPriority.size() == 0) {
+            return o1.getColor().compareTo(o2.getColor());
         }
+        else {
 
-        return 1;
+            if (this.colorPriority.indexOf(o1.getColor()) < this.colorPriority.indexOf(o2.getColor())) {
+                return -1;
+            } else if (this.colorPriority.indexOf(o1.getColor()) == this.colorPriority.indexOf(o2.getColor())) {
+                return 0;
+            }
+
+            return 1;
+        }
     }
 }
