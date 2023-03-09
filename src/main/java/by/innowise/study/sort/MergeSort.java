@@ -1,6 +1,6 @@
 package by.innowise.study.sort;
 
-import by.innowise.study.entity.Ball;
+import by.innowise.study.entity.impl.Ball;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -8,7 +8,7 @@ import java.util.List;
 
 public class MergeSort extends Thread {
 
-    private List<Ball> list;
+    private volatile List<Ball> list;
     private List<Ball> left = new ArrayList<>();
     private List<Ball> right = new ArrayList<>();
     private Comparator<Ball> comp;
@@ -35,7 +35,10 @@ public class MergeSort extends Thread {
     }
 
     public void sort() {
-        if(this.getList().size()==0){
+        if (this.getList() == null) {
+            return;
+        }
+        if (this.getList().size() == 0) {
             return;
         }
         this.start();

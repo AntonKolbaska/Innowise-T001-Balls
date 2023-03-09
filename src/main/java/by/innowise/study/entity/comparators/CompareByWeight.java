@@ -1,6 +1,6 @@
 package by.innowise.study.entity.comparators;
 
-import by.innowise.study.entity.Ball;
+import by.innowise.study.entity.impl.Ball;
 
 import java.util.Comparator;
 
